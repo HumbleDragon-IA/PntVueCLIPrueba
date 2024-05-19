@@ -2,10 +2,10 @@
 export default {
   name: 'src-componentes-contador',
   components: {},
-  props: [],
+  props: ['ini', 'fondo'],
   data () {
     return {
-
+      contador:this.ini,
     }
   },
   computed: {
@@ -15,7 +15,12 @@ export default {
 
   },
   methods: {
-
+    getColorFondo(){
+      return `btn-${this.fondo}`
+    },
+    contar(){
+      this.contador++;
+    }
   }
 }
 

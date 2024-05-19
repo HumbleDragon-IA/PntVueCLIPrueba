@@ -8,6 +8,12 @@
       <Binding />
       <Estructura/>
       <Atributos />
+
+      <Formulario />
+
+      <Contador ini="123" fondo="success"/>
+      <Contador ini="456" fondo="warning" />
+      <Contador ini="789" fondo="danger" />
   </div>
 </div>
   
@@ -17,6 +23,8 @@
 import Binding from './componentes/Binding.vue'
 import Estructura from './componentes/Estructura.vue'
 import Atributos  from './componentes/Atributos.vue'
+import Contador  from './componentes/Contador/index.vue'
+import Formulario  from './componentes/Formulario/index.vue'
 
 export default {
   name: 'App',
@@ -24,6 +32,8 @@ export default {
     Binding,
     Estructura,
     Atributos,
+    Contador,
+    Formulario
   }
 }
 </script>
