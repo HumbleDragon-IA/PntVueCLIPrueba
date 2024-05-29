@@ -35,7 +35,7 @@
 
 </template>
 
-<script lang="js">
+<script>
 
   export default  {
     name: 'src-componentes-atributos',
@@ -46,7 +46,7 @@
     data () {
       return {
 estado1: true,
-estado2: true,
+estado2: false,
 
 
       }

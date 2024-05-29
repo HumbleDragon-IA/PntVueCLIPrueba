@@ -14,3 +14,7 @@
   .table td, .table th{
     vertical-align: middle;
   }
+
+  label {
+    text-transform: capitalize;
+  }

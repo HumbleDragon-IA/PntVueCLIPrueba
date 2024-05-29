@@ -2,6 +2,78 @@
   <div class="jumbotron">
     <h2>Formularios</h2>
     <hr>
+
+    <form novalidate @submit.prevent="enviar()">
+
+      <div class="form-group">
+        <label for="nombre">nombre</label>
+        <input 
+        id="nombre" 
+        type="text" 
+        class="form-control" 
+        v-model.trim="formData.nombre" 
+        @input="formDirty.nombre=true"
+        >
+        <div v-if="
+        (!formData.nombre || 
+        formData.nombre.length <3 || 
+        formData.nombre.length >10) &&
+        formDirty.nombre" 
+        class="alert alert-danger mt-1">
+          <span v-if="!formData.nombre">Campo Requerido</span>
+          <span v-else-if="formData.nombre.length <3">Este campo debe poseer al menos 3 caracteres</span>
+          <span v-else="!formData.nombre ">Este campo debe poseer maximo 10 caracteres</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="apellido">apellido</label>
+        <input id="apellido" type="text" class="form-control"v-model.trim="formData.apellido"  @input="formDirty.apellido=true">
+        
+        <div v-if="!formData.apellido && formDirty.apellido" class="alert alert-danger mt-1">
+          Campo Requerido
+        </div>
+      </div>
+
+      <div  class="form-group">
+        <label for="edad">edad</label>
+        <input  id="edad" type="number" class="form-control"v-model="formData.edad"  @input="formDirty.edad=true">
+
+        <div v-if="!formData.edad && formDirty.edad" class="alert alert-danger mt-1">
+          Campo Requerido
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">email</label>
+        <input id="email" type="email" class="form-control"v-model="formData.email"  @input="formDirty.email=true">
+
+        <div v-if="!formData.email && formDirty.email" class="alert alert-danger mt-1">
+          Campo Requerido
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">password</label>
+        <input id="password" type="password" class="form-control"v-model="formData.password" @input="formDirty.password=true">
+        <div v-if="!formData.password && formDirty.password" class="alert alert-danger mt-1">
+          Campo Requerido
+        </div>
+      </div>
+
+       <button class="btn btn-success" :disabled="!habilitado()">Enviar</button>
+
+    </form>
+
+    <hr>
+    <p><u>formData</u></p>
+    <pre>{{formData}}</pre>
+
+    <hr>
+    <p><u>formDirty</u></p>
+    <pre>{{formDirty}}</pre>
+
+    
   </div>
 </section>
 
