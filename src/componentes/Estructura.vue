@@ -102,22 +102,78 @@
 
 </div>
 
+      <!-- -------------------- -->
+      <!-- axios: consulta json place holder -->
+      <!-- -------------------- -->
+
+      <h4>axios: consulta json place holder</h4>
+      <br>
+
+
+<div v-if="posts.length" class="table-responsive">
+  <table class="table table-dark">
+  <tr>
+    <th>userId</th>
+    <th>id</th>
+    <th>title</th>
+    <th>body</th>
+   
+
+    </tr>
     
+    <tr v-for="(post, index) in posts" :key="index">
+      <td>{{ post.userId }}</td>
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
+      
+    </tr>
     
+</table>
+
+</div>  
+<h3 v-else>No se encontraron registros</h3>
+
   </section>
 
 </template>
 
 <script lang="js">
-
-
-
-  export default  {
+ export default  {
     name: 'src-componentes-estructura',
     props: [],
-    mounted () {
 
+    beforeCreate(){
+      console.log("before create")
     },
+    created(){
+      console.log("Created")
+    },
+
+    beforeMount(){
+      console.log("before Mount")
+    },
+    mounted () {
+     this.getJsonPlaceHolder();
+    },
+    
+    beforeUpdate(){
+      console.log("before update")
+    },
+    updated(){
+      console.log("update")
+    },
+
+    beforeUnmount(){
+      console.log("before unmount")
+    },
+    unmounted(){
+      console.log("unmount")
+    },
+
+
+
+
     data () {
       return {
         mostrar:true,
@@ -133,7 +189,8 @@
           {nombre: 'Juan', apellido:'Blanco', edad:24, curso:false, foto: 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/10_avatar-512.png'},
           {nombre: 'Ana', apellido:'Perez', edad:31, curso:false, foto: 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/11_avatar-256.png'},
           {nombre: 'Laura', apellido:'Lopez', edad:26, curso:true, foto: 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/9_avatar-512.png'},
-        ]
+        ],
+        posts: []
       }
 
     },
@@ -159,7 +216,19 @@
           foto: 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/7_avatar-256.png',
         }
         this.alumnos.push(alumno)
-        }
+        },
+
+        getJsonPlaceHolder(){
+
+          this.$axios.get('/posts')
+      .then(response => {
+        /* this.datos=response.data; */
+        this.posts = response.data
+                
+      }).catch(error => {
+        console.error("hubo un error", error)
+      })
+        },
       
     },
     computed: {

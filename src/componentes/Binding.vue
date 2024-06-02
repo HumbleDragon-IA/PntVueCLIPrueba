@@ -1,7 +1,7 @@
 <template >
   <section class="src-componentes-binding">
     <div class="jumbotron">
-      <h2>Componente Binding</h2>
+      <h2>Componente Binding {{$route.params.id? ('-id: '+$route.params.id) : ''}} </h2>
       <hr />
 
       <!-- ------------ -->
